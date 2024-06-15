@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditionals & Lists</title>
+    <link rel="stylesheet" href="./css-reset.css" />
+    <link rel="stylesheet" href="./css-fonts.css" />
+    <link rel="stylesheet" href="./css-styles.css" />
+  </head>
+  <body class="font font-400">
+    <header>
+      <h1>Monster Slayer</h1>
+    </header>
+    <div id="game">
+      <section id="monster" class="container">
+        <h2>Monster Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value" :style="monsterBar"></div>
+        </div>
+      </section>
+      <section id="player" class="container">
+        <h2>Your Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value" :style="playerBar"></div>
+        </div>
+      </section>
+      <section class="container" v-if="gameResult">
+        <h2>Game Over</h2>
+        <h3 style="text-transform: uppercase; margin-top: 1rem">
+          {{gameResult}}
+        </h3>
+        <button @click="startNewGame">New Game</button>
+      </section>
+      <section id="controls" v-else>
+        <button @click="attackMonster">Attack</button>
+        <button
+          @click="specialAttackMonster"
+          :disabled="specialAttackAvailable"
+        >
+          Special Attack
+        </button>
+        <button @click="heal">Heal</button>
+        <button @click="surrender">Surrender</button>
+      </section>
+      <section id="log" class="container">
+        <h2>Battle Log</h2>
+        <ul style="text-align: left">
+          <li v-for="log in logs">
+            <span :class="`log--${log.actionBy.toLowerCase()}`">
+              {{log.actionBy}}&nbsp;
+            </span>
+            <span :class="`log--${log.actionType.toLowerCase()}`">
+              {{log.actionType}}&nbsp;
+            </span>
+            with value <span class="font-600">{{log.value}}</span>.
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

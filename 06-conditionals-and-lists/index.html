@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditionals & Lists</title>
+    <link rel="stylesheet" href="./css-reset.css" />
+    <link rel="stylesheet" href="./css-fonts.css" />
+    <link rel="stylesheet" href="./css-styles.css" />
+  </head>
+  <body class="font font-400">
+    <article style="padding: 1rem">
+      <h1>Conditionals & Lists.</h1>
+      <p style="font-style: italic">
+        How to render content conditionally and repeatedly.
+      </p>
+      <ul>
+        <li>
+          <code class="font-600">v-if</code> Directive for rendering elements
+          conditionally.
+          <ul>
+            <li>
+              It accepts any JS conditional that results in a boolean value
+            </li>
+          </ul>
+        </li>
+        <li>
+          <code class="font-600">v-else</code> Rendered when the v-if
+          conditional is falsy.
+          <ul>
+            <li>Requires to placed on an immediate next sibling.</li>
+          </ul>
+        </li>
+        <li>
+          <code class="font-600">v-else-if</code> Can construct an
+          if-else-ladder tree for rendering stuff based on different conditions.
+          <ul>
+            <li>
+              Requires to placed on an immediate next sibling of a
+              <code class="font-600">v-if</code> and before a
+              <code class="font-600">v-else</code>.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <code class="font-600">v-show</code> Similar to
+          <code class="font-600">v-if</code> but instead of removing the node
+          from the DOM when condition is false, it applies a
+          <code class="font-600" style="color: red">display:none</code> to the
+          DOM node where it is applied.
+          <ul>
+            <li>
+              Use when an element is frequently switching it's visibility state,
+              as adding/removing elements costs performance.
+            </li>
+            <li>
+              But use sparingly since there'll be extra node with this which may
+              not be required.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <code class="font-600">v-for</code> For rendering lists.
+          <code style="color: red" class="font-600">v-for="item in list" </code>
+          <ul>
+            <li>
+              Can access index.
+              <code class="font-600" style="color: red"
+                >v-for="(item, index) in array"</code
+              >
+            </li>
+            <li>
+              Can also loop through JSON objects.
+              <code class="font-600" style="color: red"
+                >v-for="(value, key, index) in object"</code
+              >
+            </li>
+            <li>
+              Can loop through a range of numbers.
+              <code class="font-600" style="color: red"
+                >v-for="num in 100"</code
+              >
+            </li>
+            <li>
+              <span class="font-600">for-of</span> loop is also supported
+              instead of <span class="font-600">for-in</span> loop, but it's not
+              recommended.
+            </li>
+            <li>
+              List items should have unique
+              <code class="font-600" style="color: red">keys</code>, just like
+              in React. This has similar implications as in React.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+    <section style="margin-top: 1rem" id="root">
+      <h3>A Simple To-Do List.</h3>
+      <form @submit.prevent="addGoal">
+        <input type="text" v-model="goalTitle" />
+        <button type="submit">Add Item</button>
+      </form>
+      <code v-if="items.length === 0" class="font-600" style="color: red">
+        No Items are there in the list. Please add some.
+      </code>
+      <ul v-else class="todo-list">
+        <li class="todo-item" v-for="(item, index) in items" :key="item">
+          {{index+1}}. {{item}}
+          <button @click="removeGoal(index)">Remove</button>
+        </li>
+      </ul>
+    </section>
+
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

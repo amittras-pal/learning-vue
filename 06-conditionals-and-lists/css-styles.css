@@ -1,0 +1,16 @@
+form {
+  margin: 0.5rem 0rem;
+}
+ul.todo-list {
+  padding-left: 0rem;
+}
+li.todo-item {
+  padding: 0.5rem;
+  border: 1px solid lightgray;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+li.todo-item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,91 @@
+header {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.26);
+  padding: 0.5rem;
+  background-color: darkred;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+section {
+  width: 90%;
+  max-width: 48rem;
+  margin: auto;
+}
+
+.healthbar {
+  width: 100%;
+  height: 28px;
+  border: 1px solid darkgray;
+  margin: 1rem auto;
+  background-color: aliceblue;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.healthbar__value {
+  background-color: rgb(29, 162, 29);
+  height: 100%;
+  transition: width 0.2s ease-in-out;
+}
+
+.container {
+  text-align: center;
+  padding: 0.5rem 1.25rem;
+  margin: 1rem auto;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 12px;
+}
+
+#monster h2,
+#player h2 {
+  margin: 0.25rem;
+}
+
+#controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+button {
+  font: inherit;
+  border: none;
+  background-color: darkred;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  width: 12rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: lightgray;
+  color: darkslategray;
+  cursor: not-allowed;
+}
+
+#log ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#log li {
+  margin: 0.5rem 0;
+}
+
+.log--player {
+  color: blueviolet;
+}
+.log--monster {
+  color: orange;
+}
+.log--attacked,
+.log--special-attacked {
+  color: red;
+}
+.log--healed {
+  color: green;
+}
