@@ -3,16 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Computed Properties</title>
     <link rel="stylesheet" href="./css-reset.css" />
     <link rel="stylesheet" href="./css-fonts.css" />
     <link rel="stylesheet" href="./css-styles.css" />
   </head>
-  <body class="font font-400" id="root">
+  <body class="font font-400">
     <header>
       <h1>Computed Properties.</h1>
+      <p style="font-style: italic">
+        They're like values resolved using
+        <code class="font-600">React.useMemo</code>.
+      </p>
     </header>
-    <section></section>
+    <article>
+      <h2 class="font-700">
+        PROBLEM::Using methods to resolve values in the template.
+      </h2>
+      <h4 class="font-600">- WHY?</h4>
+      <p>
+        Because every time some data changes, Vue has to execute the method to
+        check if something changed in that section. Overriding the rendering
+        optimizations.
+      </p>
+      <h4 class="font-600">- HOW TO RESOLVE??</h4>
+      <ol>
+        <li>Avoid things like this.</li>
+        <li class="font-600">
+          Use
+          <code>computed</code>
+          properties.
+        </li>
+      </ol>
+    </article>
+    <section style="margin-top: 2rem" id="root">
+      <h2 style="margin-bottom: 1rem">Example:</h2>
+      <p>Count Value: {{count}}</p>
+      <button @click="count++">Increase</button>
+      <button @click="count--">Decrease</button>
+
+      <div style="margin-top: 1.5rem">
+        <!-- using 2-way binding to connect to variable. -->
+        <input type="text" placeholder="Enter Text" v-model="name" />
+        <p>
+          Entered Value using a method:
+          <!-- This value will be re-evaluated even when we change the counter above. 
+              You can check the log from the 'outputFullName' method. -->
+          <span class="font-600"> {{outputFullName()}} </span>
+        </p>
+        <p>
+          Entered Value using computed Value:
+          <span class="font-600"> {{fullName}} </span>
+        </p>
+      </div>
+    </section>
     <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
     <script src="./script.js"></script>
   </body>
