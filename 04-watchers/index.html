@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watchers</title>
+    <link rel="stylesheet" href="./css-reset.css" />
+    <link rel="stylesheet" href="./css-fonts.css" />
+    <link rel="stylesheet" href="./css-styles.css" />
+  </head>
+  <body class="font font-400">
+    <header>
+      <h1>Watchers.</h1>
+      <p style="font-style: italic">
+        They're like side effects performed using
+        <code class="font-600">React.useEffect</code>.
+      </p>
+    </header>
+    <article style="padding: 1rem">
+      <h2 class="font-700">Use Case:</h2>
+      <p>
+        Watchers are used to run some function when one of the data property
+        changes. <span class="font-600">Major Use Cases:</span> (just like
+        useEffect)
+      </p>
+      <ul>
+        <li>Setting Timers</li>
+        <li>HTTP calls</li>
+        <li>Interacting with storage</li>
+        <li>Rare dom interactions, like setting up mutation observers.</li>
+        <li style="font-style: italic">Any other external task...</li>
+      </ul>
+      <p>
+        They are
+        <mark>
+          functions with the same name as the data property they're depending on </mark
+        >. They receive 2 arguments, <code>newValue</code> and
+        <code>oldValue</code>
+      </p>
+      <p>
+        Just like <code class="font-600">React.useEffect</code>, you should not
+        use them to compute values and copy data between data properties.
+      </p>
+      <p style="margin-top: 1rem">
+        <mark>They can also run on computed values</mark>; just name the
+        function the same name as the computed value function.
+      </p>
+    </article>
+    <section style="margin-top: 2rem" id="root">
+      <h2 style="margin-bottom: 1rem">Example:</h2>
+      <p>This counter will reset once it exceeds 35</p>
+      <p>Count Value: <span class="font-600">{{count}}</span></p>
+      <button @click="count++">Increase</button>
+      <button @click="count--">Decrease</button>
+    </section>
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

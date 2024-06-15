@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Styling</title>
+    <link rel="stylesheet" href="./css-reset.css" />
+    <link rel="stylesheet" href="./css-fonts.css" />
+    <link rel="stylesheet" href="./css-styles.css" />
+  </head>
+  <body class="font font-400">
+    <article style="padding: 1rem">
+      <h1>Dynamic Styling.</h1>
+      <p style="font-style: italic">
+        How to set styles using dynamic styles and classes.
+      </p>
+      <p>Check the code for different syntaxes supported.</p>
+      <p>
+        <mark>
+          Can also use computed properties with some of the syntaxes to make the
+          template even more concise.
+        </mark>
+      </p>
+    </article>
+    <section style="margin-top: 2rem" id="root">
+      <h2 style="margin-bottom: 1rem">Example:</h2>
+      <p>
+        Select a box to highlight it.
+        <span class="font-600">(styled using dynamic inline styling.)</span>
+      </p>
+      <div class="boxes">
+        <!-- replacing 'v-bind' with the more concise syntax ':' -->
+        <div
+          class="box"
+          :style="{borderColor: selectedByStyle === 1 ? 'red' : 'lightgray'}"
+          @click="selectBoxByStyle(1)"
+        >
+          1
+        </div>
+        <!-- can also use '"border-color"' instead of 'borderColor', but that's not recommended. -->
+        <!-- prefer using the camelCased CSS property names; like in react. -->
+        <div
+          class="box"
+          :style="{borderColor: selectedByStyle === 2 ? 'red' : 'lightgray'}"
+          @click="selectBoxByStyle(2)"
+        >
+          2
+        </div>
+        <div
+          class="box"
+          :style="{borderColor: selectedByStyle === 3 ? 'red' : 'lightgray'}"
+          @click="selectBoxByStyle(3)"
+        >
+          3
+        </div>
+        <div
+          class="box"
+          :style="{borderColor: selectedByStyle === 4 ? 'red' : 'lightgray'}"
+          @click="selectBoxByStyle(4)"
+        >
+          4
+        </div>
+        <div
+          class="box"
+          :style="{borderColor: selectedByStyle === 5 ? 'red' : 'lightgray'}"
+          @click="selectBoxByStyle(5)"
+        >
+          5
+        </div>
+        <div
+          class="box"
+          :style="{borderColor: selectedByStyle === 6 ? 'red' : 'lightgray'}"
+          @click="selectBoxByStyle(6)"
+        >
+          6
+        </div>
+      </div>
+      <p>
+        Select a box to highlight it.
+        <span class="font-600">(styled using dynamic CSS classes.)</span>
+      </p>
+      <div class="boxes">
+        <!-- Syntax 1: adding all classes as a space-separated string -->
+        <div
+          :class="selectedByClass === 1 ? 'other-box active' : 'other-box'"
+          @click="selectBoxByClass(1)"
+        >
+          1
+        </div>
+        <div
+          :class="selectedByClass === 2 ? 'other-box active' : 'other-box'"
+          @click="selectBoxByClass(2)"
+        >
+          2
+        </div>
+        <!-- Syntax 2: adding classes using {[className]: boolean-ish} style object -->
+        <div
+          :class="{'other-box': true, active: selectedByClass === 3}"
+          @click="selectBoxByClass(3)"
+        >
+          3
+        </div>
+        <!-- Syntax 3: combining static and dynamic classes -->
+        <div
+          class="other-box"
+          :class="{active: selectedByClass === 4}"
+          @click="selectBoxByClass(4)"
+        >
+          4
+        </div>
+        <!-- Syntax 4: Array of strings; static or objects -->
+        <div
+          :class="['other-box', {active: selectedByClass === 5}]"
+          @click="selectBoxByClass(5)"
+        >
+          5
+        </div>
+        <!-- Syntax 5: Array of strings; static or resolved-via-ternary -->
+        <div
+          :class="['other-box', selectedByClass === 6 ? 'active' : '']"
+          @click="selectBoxByClass(6)"
+        >
+          6
+        </div>
+      </div>
+    </section>
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
