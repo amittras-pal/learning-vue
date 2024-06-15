@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css-reset.css" />
+    <link rel="stylesheet" href="./css-fonts.css" />
+    <link rel="stylesheet" href="./css-styles.css" />
+  </head>
+  <body class="font font-400" id="root">
+    <a
+      style="color: greenyellow; background-color: green; padding: 0.25rem"
+      href="https://vuejs.org/guide/essentials/event-handling"
+      class="font-600"
+    >
+      Event Handling:: DOCS
+    </a>
+    <section id="counter-section">
+      <header>
+        <h1>Events in Action</h1>
+      </header>
+      <h3>A simple Counter</h3>
+      <!-- initial -->
+      <p v-once>
+        Initial Count Value: {{count}}
+        <span class="font-600">(using v-once)</span>
+      </p>
+      <!-- latest -->
+      <p>Count Value: {{count}}</p>
+      <div>
+        <!-- You can bind to a function, you can also specify like - "decrement"; it's auto resolved. -->
+        <button v-on:click="decrement()">Decrement</button>
+        <!-- OR do some logic right here -->
+        <button v-on:click="count++">Increment</button>
+      </div>
+      <div>
+        <!-- You can bind to a function, you can also specify like - "decrement"; it's auto resolved. -->
+        <button v-on:click="decrement(5)">Decrement 5</button>
+        <!-- 'v-on:' can be shortened to '@' -->
+        <button @click="increment(5)">Increment 5</button>
+      </div>
+
+      <div style="margin-top: 2rem">
+        <h3>Some Input Handling.</h3>
+        <!-- This will call the handleText with the event object. -->
+        <!-- Or do '@input="handleText($event)"' - useful when additional args are required. -->
+        <input type="text" @input="handleText" />
+        <p>Your Text, capitalized: <span class="font-900">{{text}}</span></p>
+      </div>
+
+      <div style="margin-top: 2rem">
+        <h3>
+          Event Modifiers
+          <span class="font-300">(prevent default in a form)</span>.
+        </h3>
+        <!-- Handles the 'preventDefault' call on the event. -->
+        <!-- There's also 'stop' => stopPropagation -->
+        <!-- For mouse events you can have 'right', 'left:default' or 'middle', modifiers can also be chained.  -->
+        <form @submit.prevent="handleSubmit">
+          <input type="text" name="field1" placeholder="field 1" />
+          <input type="text" name="field2" placeholder="field 2" />
+          <button>submit</button>
+        </form>
+      </div>
+    </section>
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

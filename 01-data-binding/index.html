@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css-reset.css" />
+    <link rel="stylesheet" href="./css-fonts.css" />
+    <link rel="stylesheet" href="./css-styles.css" />
+  </head>
+  <body class="font font-400" id="root">
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goal">
+      <h2>My Course Goal</h2>
+      <!-- data interpolation: only for content. -->
+      <p>{{courseGoal}}</p>
+      <!-- data interpolation [dynamic]: should return a renderable value -- JS Expression. -->
+      <p>Random Text: ({{outputGoal()}})</p>
+      <!-- attribute binding: for angular-style property binding. -->
+      <!-- "v-" is a directive. -->
+      <p>There's a <a v-bind:href="href">link</a> here.</p>
+    </section>
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
