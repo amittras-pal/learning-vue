@@ -1,0 +1,23 @@
+## Contained Topics
+
+- Global and Local Components
+- Style Scoping
+  - Works in a similar way as in angular.
+  - If content is passed in slots, scoping won't work anymore.
+- Slots & Dynamic Children.
+  - By default, all children are placed in the slots.
+  - Slots can have names and elements can target their slots using the `v-slot:<slot-name>` directive. Shorten to `#<slot-name>`
+  - There can be only unnamed slot in a component, this will be used as default. This slot can be specified using `v-slot:default` directive
+  - Slots can have default content which will render in case no children are received for it.
+  - Received slot contents can be accessed using the `$slots` property. _equivalent to the **children** prop in react_
+- Scoped Slots: `Imagine trying to customize list items in a listing component.`
+  - Data can be available in a slot component, but the markup is being provided by the parent.
+  - In such case props can be sent to the markup element by binding props to the slot.
+  - and can be received in the template as
+    - `<template #slotName="slotProps"><markup/></template>`
+    - the slotProps will contain all props passed.
+- Dynamic Components:
+  - Instead of hard-coding components in the template, a special HTML element can be used `<component :is="componentName"></component>`
+  - Refer `App2`
+  - The `<keep-alive></keep-alive>` wrapper can be put around the **dynamic component** to make sure the component remains mounted and it's state is persisted.
+- Teleport: `Equivalent React.createPortal`
