@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refs</title>
+    <link rel="stylesheet" href="./css-reset.css" />
+    <link rel="stylesheet" href="./css-fonts.css" />
+    <link rel="stylesheet" href="./css-styles.css" />
+  </head>
+  <body class="font font-400">
+    <article style="padding: 1rem">
+      <h2>Refs</h2>
+      <p>Allow access to DOM elements,</p>
+      <ul>
+        <li>Use when you would use refs in react to access dom elements.</li>
+      </ul>
+    </article>
+    <section id="root" style="margin-top: 1rem">
+      <!-- Adding ref here. -->
+      <input type="text" placeholder="ref added on this" ref="input" />
+      <button @click="setText">Set Text</button>
+      <p>Entered Value: <span class="font-600">{{message}}</span></p>
+    </section>
+
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
+    <script src="./script.js" defer></script>
+  </body>
+</html>
